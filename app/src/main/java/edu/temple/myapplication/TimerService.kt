@@ -88,12 +88,10 @@ class TimerService : Service() {
             isRunning = true
             try {
                 for (i in startValue downTo 1)  {
+                    sleep(1000)
+                    while (paused)
                     Log.d("Countdown", i.toString())
                     timerHandler?.sendEmptyMessage(i)
-
-                        while (paused);
-                        sleep(1000)
-
                 }
                 isRunning = false
             } catch (e: InterruptedException) {
